@@ -29,17 +29,17 @@ int main()
 		//cout << buf[i];
 		if (isalpha(buf[i]) == 2) // 0은 문자아님, 1은 대문자, 2는 소문자
 		{
-			for (j = 0; j < 26; j++)
+			for (j = 0; j < 26; j++) // a~z까지 26개니까 26번 반복
 			{
-				if (buf[i] == 97 + j)
+				if (buf[i] == 97 + j) // 97('a') +0 = a , alpha[0]에 저장, 'a'+1 = 'b', alpha[1]에 저장 ... 'a'+25 = 'z', alpha[25]에 저장
 					alpha[j] += 1;
 			}
-			count++;
+			count++; 
 		}
 	}
 	cout <<endl<< "총 알파벳 수 " << count << endl << endl;
 
-	for (i = 0; i < 26; i++)
+	for (i = 0; i < 26; i++) // alpha배열의 각 열에 저장된 숫자만큼 for문돌려서 * 출력
 	{
 		cout << (char)('a' + i) << " (" << alpha[i] << ")  : ";
 		for (j = 0; j < alpha[i]; j++)
