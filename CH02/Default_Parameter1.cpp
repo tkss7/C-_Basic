@@ -1,4 +1,4 @@
-//Default_Paramemter1.cpp 03/17
+//Default_Paramemter1.cpp 03/17 O
 //구조체는 모든게 public class => 구조체를 확장해서 만든 것 객체지향은 class로 설계해서 만드는게 바람직하다.
 #include<iostream>
 using namespace std;

@@ -59,7 +59,7 @@ int main()
 	}
 	else
 	{
-		cout << "좌표가 바르지 않습니다." << endl;
+		cout << "좌표가 바 르지 않습니다." << endl;
 		p1.shwXY();
 	}
 	A tmp;
