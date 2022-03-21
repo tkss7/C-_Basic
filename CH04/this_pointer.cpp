@@ -1,4 +1,4 @@
-//this_pointer.cpp
+//this_pointer.cpp 03/18
 #include<iostream>
 using namespace std;
 class Person
@@ -13,7 +13,7 @@ public:
 
 	Person *getThis() //얘를 부른 객체의 주소값을 가짐
 	{
-		return this; //자기멤버를 가리킴
+		return this; //자기멤버를 가리킴 // 이 메소드를 부른 객체의 주소를 가리킴
 	}
 	Person getThis2()
 	{
