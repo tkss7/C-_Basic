@@ -27,5 +27,20 @@
     <ClCompile Include="Default_Parameter_모호성.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Default_Parameter_VectorClass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="static_Circle.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="static_Person.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="const_Person.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="const_상수객체.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
