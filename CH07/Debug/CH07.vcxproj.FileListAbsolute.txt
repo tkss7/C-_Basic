@@ -1,1 +1,2 @@
 C:\Users\dltkd\Desktop\C++_Basic\CH07\Debug\CH07.exe
+D:\C_Plus-Plus_Basic\CH07\Debug\CH07.exe
