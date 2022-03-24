@@ -3,6 +3,8 @@
 using namespace std;
 /*
 	메서드 오버라이딩(Overriding) : 함수 재정의(다형성)
+									상속클래스에서 구현내용을 바꾸기 위해 사용한다.
+
 	메서드 오버로딩(Overloading) : 함수 중복정의
 */
 class AAA
@@ -36,7 +38,7 @@ int main()
 	AAA* a1 = b2; //Up Cast
 	a1->fct(); //AAA 메서드 호출		//객체포인터는 기본적으로 자신의 멤버,메서드만 부른다.
 	
-	//a1->BBB::fct(); // Error : 기반클래스 포인터는 파생클래스 객체를 가리킬 수 없다.
+	//a1->BBB::fct(); // Error : 기반클래스 포인터는 파생클래스 객체를 가리킬 수 없다. : 업캐스팅이라 불가능함!!!
 
 	return 0;
 }

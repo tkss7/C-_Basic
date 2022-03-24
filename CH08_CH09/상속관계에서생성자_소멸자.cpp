@@ -28,9 +28,9 @@ class SoDerived : public SoBase
 private:
 	int devNum;
 public:
-	SoDerived(int n) : SoBase(n) //기본클래스의 명시적 호출
+	SoDerived(int k) : SoBase(k) //기본클래스의 명시적 호출
 	{
-		devNum = n;
+		devNum = k;
 		cout << "SoDerived(int n) : " << devNum << endl;
 	}
 

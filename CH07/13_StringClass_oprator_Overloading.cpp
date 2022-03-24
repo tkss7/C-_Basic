@@ -96,7 +96,7 @@ String String::operator+ (const String& s) //반환값이 &가 아니므로 값을 반환하여
 	delete []tempstr;
 	return temp;
 }
-
+// 생성자 : 객체를 초기화 할 목적으로 사용됨
 ostream& operator<< (ostream& os, const String& s)
 {
 	cout << "operator<< (ostream& os, const String& s)" << endl;
