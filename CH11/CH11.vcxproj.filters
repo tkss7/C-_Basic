@@ -21,5 +21,14 @@
     <ClCompile Include="Point_출력스트림연산.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Book_출력스트림연산.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="IStream_Intro.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Point _입력스트림연산.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

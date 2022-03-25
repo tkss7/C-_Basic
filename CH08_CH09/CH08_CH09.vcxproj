@@ -163,6 +163,7 @@
     <ClCompile Include="Color_Point_InheritanceIntro.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="FileIO_Employess.cpp" />
     <ClCompile Include="Overriding_Virtual_Intro.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>

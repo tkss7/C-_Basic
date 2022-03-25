@@ -1,0 +1,21 @@
+1001
+kim
+computer
+1002
+lee
+간호학
+1003
+han
+국문학; for 16-bit app support
+[386Enh]
+woafont=dosapp.fon
+EGA80WOA.FON=EGA80WOA.FON
+EGA40WOA.FON=EGA40WOA.FON
+CGA80WOA.FON=CGA80WOA.FON
+CGA40WOA.FON=CGA40WOA.FON
+
+[drivers]
+wave=mmdrv.dll
+timer=timer.drv
+
+[mci]
