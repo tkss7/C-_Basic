@@ -1,2 +1,4 @@
-﻿  다중상속_Intro.cpp
+﻿  FileIO_Employess.cpp
+C:\Users\dltkd\Desktop\C++_Basic\CH08_CH09\FileIO_Employess.cpp(61,4): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\dltkd\Desktop\C++_Basic\CH08_CH09\FileIO_Employess.cpp(73,4): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   CH08_CH09.vcxproj -> C:\Users\dltkd\Desktop\C++_Basic\CH08_CH09\Debug\CH08_CH09.exe

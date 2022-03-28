@@ -1,6 +1,10 @@
 //employess.c
-#include <stdio.h>
-#include <string.h>
+#include <iostream>
+#include <cstring>
+#include<fstream>
+#include<vld.h>
+
+using namespace std;
 #define EMP_SZ 30
 
 /*
@@ -10,41 +14,210 @@
 
 라이브러리함수의 성공,실패여부를 알려주는 perror()함수가 있다. 
 */
-char names[EMP_SZ][20], comAddr[EMP_SZ][50];
-int salary[EMP_SZ], Cn=0 ;//공통으로 쓰는건 전역변수 처리
+	
+class Employee {
+	char** names; // names[EMP_SZ][20]을 받기위한 더블 포인터
+	char **comAddr; // comAddr[EMP_SZ][50]을 받기위한 더블 포인터
+	int *salary;
+	int Cn, salTot;
 
-emp_save();
-emp_input();
-emp_output();
-emp_find();
-emp_load();
+public:
+	Employee() :Cn(0) {
+		names = new char* [EMP_SZ]; // 30행을 먼저 배열포인터로 할당
+		comAddr = new char* [EMP_SZ]; // 30행을 먼저 배열포인터로 할당
+		salary = new int[EMP_SZ]; // 30열 동적 할당
+		salTot = 0;
+	}
+	~Employee() // 할당된 메모리들 전부 해제
+	{
+		for (int i = 0; i <Cn; i++)
+		{
+			delete[] names[i];  
+			delete[] comAddr[i];
+		}
+		delete[] names;
+		delete[] comAddr;
+		delete[] salary;
+	}
+	void input()
+	{
+		int i;
+		char _names[20]; //입력 임시 버퍼
+		char _comAddr[50]; // 입력 임시 버퍼
+
+		
+		for (i = Cn; i < EMP_SZ; i++)
+		{
+			names[i] = new char[20]; // 20열 동적할당( 20byte)
+			comAddr[i] = new char[50]; // 50열 동적할당 ( 50byte)
+
+			cout<< "(성명 ? (입력죵료:end) )";
+			cin.getline(_names, 20); // 입력버퍼에 20바이트 입력
+			if (strcmp(_names, "end") == 0)
+			{
+				delete names[i]; // end 입력되면 방금 할당 받은 행의 20byte 할당 해제
+				delete comAddr[i]; // end 입력되면 방금 할당 받은 행의 50byte 할당 해제
+				break;
+			}
+
+			strcpy(names[i], _names); // 버퍼 -> 배열로 복사
+			
+
+
+			cout<<"(월급 ? )";
+			cin >> *(salary+i);
+			cin.clear();
+			cin.ignore(100, '\n');
+
+			cout<<"(회사주소 ? )";
+			cin.getline(_comAddr, 50);
+			strcpy(comAddr[i], _comAddr);
+
+		}
+		Cn = i;
+
+	}
+
+	void output()//데이터 출력
+	{
+		int i;
+	
+		for (i = 0; i < Cn; i++)
+		{
+			cout << names[i] << ", " << salary[i] << ", " << comAddr[i] << endl;
+			salTot += salary[i];
+		}
+	
+
+		if (Cn)
+		{
+			cout<<"====================\n";
+			cout << "(월급평균: " << salTot / Cn<<")" << endl;
+			cout<<"====================\n";
+
+		}
+
+		// 클래스 포인터는 (*x).xx 형식으로 해야하는듯?
+
+	}//emp_output() end
+	// cin.ignore(1) // 엔터값 버림
+	void find()//검색 알고리즘
+	{
+		int i,found;
+		char s_name[20];
+
+		while (1)
+		{
+			cout<<"(검색할 성명 ? (검색종료:end))";
+			cin >> s_name;   //lee,kim, sun ... end
+			if (strcmp(s_name, "end") == 0)
+				break;
+
+			found = 1;
+			for (i = 0; i < Cn; i++)
+			{
+				if (strcmp(names[i], s_name) == 0)
+				{
+					found = 0;
+					cout << names[i] << ", " << salary[i] << ", " << comAddr[i] << endl;;
+					//break; 
+				}
+			}
+
+			if (found)
+				cout << s_name << ", Not found!!! " << endl;
+
+		} //while (1) end
+	}//find() end
+
+	int save()
+	{
+		const char* file = "employess.dat";
+		ofstream fout(file, ios::out | ios::binary);
+
+		if (!fout)
+		{
+			cout << file << " 파일열기 실패 !!!" << endl;
+			return 0;
+		}
+
+		fout.write((char*)(&Cn), sizeof(Cn)); // Cn주소에 4바이트만큼 꺼내 저장
+		for (int i = 0; i < Cn; i++)
+		{
+			fout.write(names[i],20); // i 번째열의 20byte를 파일에 저장
+			fout.write((char*)(salary + i), sizeof(salary[0]));
+			fout.write(comAddr[i], 50);
+		}
+
+		fout.close();
+		cout << "저장 완료!!!!!" << endl;
+		return 0;
+	}//emp_save() end
+
+	int load()
+	{
+		const char* file1= "employess.dat";
+		ifstream fin(file1, ios::in | ios::binary);
+
+		if (!fin)
+		{
+			perror("Error : ");
+			cout << "file load error. " << endl;
+			return -1;
+		}
+
+		fin.read((char*)(&Cn), sizeof(Cn));
+
+		// load는 프로그램 껏다가 다시 킬때 실행됨
+		// 프로그램 끌 때 동적할당 받은거 전부 해제했고 다시 켰을 때 행 열 중 행만 동적할당 했으니(생성자)
+		//  Cn개 만큼 열들을 다시 할당 후 -> 데이터 읽어들여야 함
+		for (int i = 0; i < Cn; i++)
+		{
+			names[i] = new char[20]; 
+			comAddr[i] = new char[50];
+			fin.read(names[i], 20); //20 바이트만큼 읽어 i번째 행의 시작주소에 저장
+			fin.read((char*)(salary + i), sizeof(salary[0]));
+			fin.read(comAddr[i], 50);
+		}
+		fin.close();
+		cout << "emps.dat load." << endl;
+		return 0;
+	}//emp_load() end
+
+
+};
+
 
 int main()
 {
 	int choice, stop = 1;
-
-	emp_load();//사원정보 메모리 적재
+	Employee emp;
+	emp.load();//사원정보 메모리 적재
 
 	while (stop)
 	{
+		do {
 
-		printf("1. 사원정보 입력 \n");
-		printf("2. 사원정보 출력 \n");
-		printf("3. 사원정보 검색 \n");
-		printf("4. 사원정보 저장 \n");
-		printf("5. 사원정보 종료 \n");
-		printf("Select ? (1~5) ");
-		scanf("%d%*c", &choice);
+			cout << "1. 사원정보 입력 " << endl;;
+			cout << "2. 사원정보 출력 " << endl;;
+			cout << "3. 사원정보 검색 " << endl;;
+			cout << "4. 사원정보 저장 " << endl;;
+			cout << "5. 사원정보 종료 " << endl;;
+			cout << "Select ? (1~5) ";
+			cin >> choice;
+			cin.clear();
+			cin.ignore(256, '\n'); //버퍼에 남은데이터 지우기
+		} while (cin.fail()); // 문자 입력받으면 fail함수 리턴 값이 1임
 
 		switch (choice) //해당되는 번호가 없으면 다시 부름
 		{
-		case 1: emp_input();
+		case 1: emp.input();
 			break;
-		case 2: emp_output();
+		case 2: emp.output();
 			break;
-		case 3: emp_find();
+		case 3: emp.find();
 			break;
-		case 4: emp_save();
+		case 4: emp.save();
 			break;
 		case 5:stop = 0;
 			break;
@@ -58,119 +231,3 @@ int main()
 	return 0;
 }// main() end
 
-emp_input()//데이터 입력
-{
-	int i;
-	int choice, stop = 1;
-	
-
-	
-	for (i = Cn; i < EMP_SZ; i++)
-	{
-		printf("성명 ? (입력죵료:end) ");
-		gets(names[i]); //kim['\0], lee, han
-
-		if (strcmp(names[i], "end") == 0)
-			break;
-		printf("월급 ? ");
-		scanf("%d%*c", &salary[i]); //1000[enter], 2000, 3000
-		printf("회사주소 ? ");
-		gets(comAddr[i]);  //seoul, busan, incheon
-	}
-
-	Cn = i;
-}//emp_input() end
-
-emp_output()//데이터 출력
-{
-	int i, salTot = 0;
-	
-	for (i = 0; i < Cn; i++)
-	{
-		printf("%s, %d, %s \n", names[i], salary[i], comAddr[i]);
-		salTot += salary[i];
-	}
-	
-	printf("%d %d", sizeof(names), sizeof(names[0]));
-	if (Cn)
-	{
-		printf("====================\n");
-		printf("월급평균: %d \n", salTot / Cn);
-		printf("====================\n");
-		printf("%s", names);
-	}
-
-
-}//emp_output() end
-
-emp_find()//검색 알고리즘
-{
-	int i,found;
-	char s_name[20];
-
-	while (1)
-	{
-		printf("\n검색할 성명 ? (검색종료:end) ");
-		gets(s_name);   //lee,kim, sun ... end
-		if (strcmp(s_name, "end") == 0)
-			break;
-
-		found = 1;
-		for (i = 0; i < Cn; i++)
-		{
-			if (strcmp(names[i], s_name) == 0)
-			{
-				found = 0;
-				printf("%s, %d, %s \n", names[i], salary[i], comAddr[i]);
-				//break; 
-			}
-		}
-
-		if (found)
-			printf("%s, Not found!!! \n", s_name);
-
-	} //while (1) end
-}//emp_find() end
-
-emp_save()
-{
-	FILE* fp;
-
-	fp = fopen("emps.dat", "wb");
-	if (fp == NULL)
-	{
-		//perror(""); =>""다음에 에러넘버에 해당하는 메시지 내용을 알아서 붙여준다.( 유저가 조치할 수 있도록)
-		perror("Error : ");
-		exit(1);
-	}
-	fwrite(&Cn, sizeof(Cn), 1, fp);
-	fwrite(names, sizeof(names[1]), Cn, fp);
-	fwrite(salary, sizeof(salary[1]), Cn, fp);
-	fwrite(comAddr, sizeof(comAddr[1]), Cn, fp);
-	fclose(fp);
-
-
-}//emp_save() end
-
-emp_load()
-{
-	FILE* fp;
-	fp = fopen("emps.dat", "rb");
-	if (fp == NULL)
-	{
-		printf("file load error. \n");
-		return;
-	}
-	fread(&Cn, sizeof(Cn), 1, fp);
-	for (int i = 0; i < Cn; i++)
-	{
-		fread(names[i], sizeof(names[1]), 1, fp); // nams[i]의 주소 입력하면 값으로 넣을수 있는 바이트가 20byte가 최대라서
-													// 만약 1 대신 Cn으로 넣으면 20의 공간에 600이 들어오므로 터진다.
-	}
-	fread(salary, sizeof(salary[1]), Cn, fp); //따라서 Cn개를 한번에 넣으려면 시작주소를 names로 하여 600byte의 공간에 적재해야한다.
-	fread(comAddr, sizeof(comAddr[1]), Cn, fp);
-
-
-	fclose(fp);
-	printf("emps.dat load.\n");
-}//emp_load() end

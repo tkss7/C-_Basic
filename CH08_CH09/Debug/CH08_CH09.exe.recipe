@@ -5,7 +5,11 @@
       <FullPath>C:\Users\dltkd\Desktop\C++_Basic\CH08_CH09\Debug\CH08_CH09.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
-  <ContentFiles />
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>C:\Users\dltkd\Desktop\C++_Basic\CH08_CH09\FileIO_Employess.cpp</FullPath>
+    </ContentFile>
+  </ContentFiles>
   <SatelliteDlls />
   <NonRecipeFileRefs />
 </Project>
