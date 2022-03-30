@@ -1,0 +1,31 @@
+cin.clear() : cin 객체의 내부 상태 플래그를 초기화 시켜 기능이 정상작동하도록 함 ex) cin.fail 초기화
+cin.ignore() : 입력 버퍼에 있는 모든 내용을 추출해서 버림
+
+참조자
+int &ref=10+20; // 변수가 아니므로 참조할수 없다.
+//const int ref = 10+20; // const를 붙이면 참조 가능하다
+int &&ref = 10+20; //&를 두개붙여도 참조 가능하다.
+
+&&쓰는 이유 = 객체를 반환?하여 참조하지 않고 직접 값을 참조하는 경우
+		const를 참조자에 붙여서 사용해야 하지만 const를 붙이고
+		싶지 않은 ex) setRadius() 메소드 등 과 같은 것에는 값을 
+		변경해야 하므로 사용할 수 없다. 이럴 때 &&를 사용한다.
+
+		&&를 사용하여 getradius, operator int() 등과 같은것에 하고픈
+		대로 const를 붙이고 불러오는 객체에 &&를 붙여 이것이 가능하게 한다.
+
+void TestFunc(CTestData &&param) // &쓰면 오류뜸
+{ // &&쓰면
+	cout << "TestFunc(CTestData param)" << endl;
+	cout << param.getData() << endl; // getData() 선언문에 const 사용 가능
+	param.setData(200); // const가 없어도 사용 가능하다. ( 오히려 있으면 문제됨)
+	cout << param.getData() << endl; 
+
+또는 참조자를 안쓰는 것도 방법이다.
+
+void TestFunc(CTestData param) 
+{
+	cout << "TestFunc(CTestData param)" << endl;
+	cout << param.getData() << endl;
+	param.setData(200);
+	cout << param.getData() << endl;

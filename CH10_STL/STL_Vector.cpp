@@ -25,8 +25,8 @@ int main()
 	v[0] = 10;
 	int num = v[2];
 	v.at(3) = 3;
-	// v[0] : 범위를 검사안함
-	// v.at(3) : 범위를 검사함
+	// v[0] : 범위를 검사안함 ex) v[100] 이면 무작정 100번째 열을 찾아 넣으려함
+	// v.at(3) : 범위를 검사함 ex) v[100]이면 100번째 열이 있는지 확인 후 넣으려함
 	for (int i = 0; i < v.size(); i++)
 	{
 		cout << v[i] << ", ";
@@ -48,7 +48,7 @@ int main()
 	cout << "v.size() : " << v.size() << endl;
 	cout << "v.capacity() : " << v.capacity() << endl;
 
-	v.shrink_to_fit(); // capacity() = 크기 재조명
+	v.shrink_to_fit(); // capacity() = 크기 최신화
 
 	cout << "v.size() : " << v.size() << endl;
 	cout << "v.capacity() : " << v.capacity() << endl << endl;

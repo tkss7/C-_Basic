@@ -21,10 +21,58 @@
     <ClCompile Include="STL_Queue.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="X22_STL_deque.cpp">
+    <ClCompile Include="STL_deque.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="STL_Vector.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="STL_Vector_Sort.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="STL_Vector_Sort_사용자정의.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="STL_Vector_Pair.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="STL_vector_student_score.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="STL_Vector_Tuple.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="STL_List.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="STL_Map.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="STL_Map_Student.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="STL_Array.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Cplusplus_auto.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Cplusplus_auto2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Ramda.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="C_date_time.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Cplusplus_date_time.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="random_c.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="random_Cplus.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
