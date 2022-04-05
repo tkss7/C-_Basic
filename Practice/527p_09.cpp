@@ -26,7 +26,7 @@ int main()
 	{
 		cout << "정수를 입력하세요(0을 입력하면 종료)>>";
 		cin >> tmp;
-		cin.clear();
+		cin.ignore(1,'\n');
 
 		v.push_back(tmp);
 ;

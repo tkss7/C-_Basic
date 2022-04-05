@@ -28,8 +28,7 @@ private:
 	int salary;
 public:
 	PermanentWorker(const char* name, int money)
-		: Employee(name), salary(money)
-	{  }
+		: Employee(name), salary(money) {  }
 	int GetPay() const
 	{
 		return salary;

@@ -1,0 +1,9 @@
+8
+yoon 300 seoul
+woo 400 incheon
+young 500 busan
+yoon 77777 seoul
+woo 300000 seoul
+kim 300000 seoul
+lee 55555 seoul
+han 3000000 seoul

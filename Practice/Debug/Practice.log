@@ -1,3 +1,12 @@
-﻿  527p_09.cpp
-C:\Users\dltkd\Desktop\C++_Basic\Practice\527p_09.cpp(33,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-  Practice.vcxproj -> C:\Users\dltkd\Desktop\C++_Basic\Practice\Debug\Practice.exe
+﻿  528p_10.cpp
+C:\Users\dltkd\Desktop\C++_Basic\Practice\528p_10.cpp(75,44): error C2064: 항은 2개의 인수를 받아들이는 함수로 계산되지 않습니다.
+C:\Users\dltkd\Desktop\C++_Basic\Practice\528p_10.cpp(75,15): error C2672: 'find': 일치하는 오버로드된 함수가 없습니다.
+C:\Users\dltkd\Desktop\C++_Basic\Practice\528p_10.cpp(75,1): error C2780: '_InIt std::find(_InIt,const _InIt,const _Ty &)': 인수가 3개 있어야 하는데 2개를 사용했습니다.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(5346): message : 'std::find' 선언을 참조하십시오.
+C:\Users\dltkd\Desktop\C++_Basic\Practice\528p_10.cpp(76,1): error C3536: 'it': 초기화되기 전에 사용할 수 없습니다.
+C:\Users\dltkd\Desktop\C++_Basic\Practice\528p_10.cpp(76,12): error C2677: 이항 '==': 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>' 형식을 사용하는 전역 연산자가 없거나 허용되는 변환이 없습니다.
+          with
+          [
+              _Ty=Nation
+          ]
+C:\Users\dltkd\Desktop\C++_Basic\Practice\528p_10.cpp(102,22): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.

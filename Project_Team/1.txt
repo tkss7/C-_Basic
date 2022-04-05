@@ -1,0 +1,4 @@
+3
+kim 1000 seoul
+lee 2000 incheon
+han 3000 gyunggi
