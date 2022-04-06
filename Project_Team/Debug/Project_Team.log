@@ -1,0 +1,6 @@
+﻿  Class_EmployeeFileIO.cpp
+D:\C_plusplus\Project_Team\Class_EmployeeFileIO.cpp(24,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\C_plusplus\Project_Team\Class_EmployeeFileIO.cpp(25,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\C_plusplus\Project_Team\Class_EmployeeFileIO.cpp(33,7): warning C4101: 'i' :참조되지 않은 지역 변수입니다.
+D:\C_plusplus\Project_Team\Class_EmployeeFileIO.cpp(176,13): warning C4101: 'ptr' :참조되지 않은 지역 변수입니다.
+  Project_Team.vcxproj -> D:\C_plusplus\Project_Team\Debug\Project_Team.exe

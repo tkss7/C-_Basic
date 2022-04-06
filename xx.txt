@@ -1,0 +1,30 @@
+class 승객 정보
+{
+
+}
+
+class 비행기표 
+{
+
+}
+
+class 비행기표_ 1등석 : public 비행기표 
+{
+
+}
+
+class 비행기표_ 이코노미  : public 비행기표 
+{
+
+}
+
+class 핸들러
+{
+
+}
+
+비행기 예메 : 1. 원하는 목적지를 검색한다. 
+
+퍼스트 이코노미 클래스가 플래인 클래스로부터 상속받고
+map써서 make페어할때 퍼스트면  make_pair(예약번호, (Plane*)&퍼스트[i]) 이런식?
+map find로 찾고 찾으면 itr->second->Revise(); 
