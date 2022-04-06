@@ -1,0 +1,13 @@
+﻿  gogo.cpp
+D:\C_Plus-Plus_Basic\Mini_Project\gogo.cpp(24,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\C_Plus-Plus_Basic\Mini_Project\gogo.cpp(25,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\C_Plus-Plus_Basic\Mini_Project\gogo.cpp(26,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\C_Plus-Plus_Basic\Mini_Project\gogo.cpp(51,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\C_Plus-Plus_Basic\Mini_Project\gogo.cpp(52,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\C_Plus-Plus_Basic\Mini_Project\gogo.cpp(61,39): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\C_Plus-Plus_Basic\Mini_Project\gogo.cpp(62,41): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\C_Plus-Plus_Basic\Mini_Project\gogo.cpp(64,45): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\C_Plus-Plus_Basic\Mini_Project\gogo.cpp(65,49): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\C_Plus-Plus_Basic\Mini_Project\gogo.cpp(192,13): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\C_Plus-Plus_Basic\Mini_Project\gogo.cpp(193,13): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Mini_Project.vcxproj -> D:\C_Plus-Plus_Basic\Mini_Project\Debug\Mini_Project.exe
