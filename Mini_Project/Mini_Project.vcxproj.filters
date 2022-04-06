@@ -18,5 +18,14 @@
     <ClCompile Include="gogo.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="class_ver3.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="소스.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="소스2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

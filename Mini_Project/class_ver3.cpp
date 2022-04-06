@@ -44,6 +44,7 @@ private:
     char phone[14];
     char planeNum2[6] = "";
     char reservNum[5];
+    int password = 0;
 public:
     Passenger(const char* planeNum = "", const char* destination = "", const char* time = "", int _count = 0,
         const char* name = "", int age = 0, const char* phone = "") : TicketList(planeNum, destination, time, _count)
@@ -57,14 +58,16 @@ public:
     char* Getphone() { return phone; }
     char* GetplaneNum() { return planeNum2; }
     char* GetreservNum() { return reservNum; }
+    int Getpassword() { return password; }
 
     void Setname(const char* _name) { strcpy(name, _name); }
     void Setphone(const char* _phone) { strcpy(phone, _phone); }
     void Setage(int _age) { age = _age; }
     void SetplaneNum2(const char* _plane) { strcpy(planeNum2, _plane); }
     void SetreservNum(const char* _reservNum) { strcpy(reservNum, _reservNum); }
+    void Setpassword(int _password) { password = _password; }
 
-    friend void ReservationCheck();
+    
 
 
     void Setname(int age)
@@ -77,7 +80,7 @@ class PassHandler   //PassHandler
 {
 private:
     TicketList* ticketlist[TIKET_SZ];
-    list<Passenger*> p;
+    list<Passenger*> p; 
     int tkNum;
     list<Passenger*>::iterator it;
     int _countNum = 0;
@@ -133,7 +136,7 @@ public:
         int _age;
         char _ticket[6];
         char _reservNum[10];
-
+        int password;
         while (1)
         {
             ShowData();
@@ -181,6 +184,14 @@ public:
                 if (found)
                     cout << "일치하는 것이 없습니다." << endl;
             }
+
+            do {
+                cout << "비밀번호 숫자 4자리를 입력하세요." << endl;
+                cin >> password;
+                cin.clear();
+                cin.ignore(256, '\n');
+            } while (cin.fail());
+            pass->Setpassword(password);
             //pass->SetplaneNum2(_ticket);
 
             _countNum++;
@@ -275,6 +286,8 @@ public:
         int found;
         char s_reservNum[20], * getreservNum;
         char *c_planeNum;
+        int password;
+
         it = p.begin();
         cout << "예약 취소" << endl;
         
@@ -282,36 +295,53 @@ public:
         {
             cout << "\n취소할 예약 번호 ? (검색종료:end) ";
             cin.getline(s_reservNum, 20);   //lee, kim, sun, ... end
+            //cin.ignore(256, '\n');
             if (strcmp(s_reservNum, "end") == 0)
                 break;
             found = 1;
+           
+           
 
-           while(it!=p.end())
+            while (it != p.end())
             {
+                do {
+                    cout << "비밀번호 숫자 4자리를 입력하세요." << endl;
+                    cin >> password;
+                    cin.clear();
+                    cin.ignore(256, '\n');
+                } while (cin.fail());
+
                 getreservNum = (*it)->GetreservNum();
                 pass = *it;
-                if (strcmp(getreservNum, s_reservNum) == 0)
+                if ((*it)->Getpassword() == password)
                 {
-                    
-                    found = 0;
-                    c_planeNum = (*it)->GetplaneNum();
-                    for (int i = 0; i < TIKET_SZ; i++)
+                    if (strcmp(getreservNum, s_reservNum) == 0)
                     {
-                        if (strcmp(c_planeNum, ticketlist[i]->GetplaneNum()) == 0)
-                            ticketlist[i]->Setcount(+1);
+
+                        found = 0;
+                        c_planeNum = (*it)->GetplaneNum();
+                        for (int i = 0; i < TIKET_SZ; i++)
+                        {
+                            if (strcmp(c_planeNum, ticketlist[i]->GetplaneNum()) == 0)
+                                ticketlist[i]->Setcount(+1);
+                        }
+                        delete pass;
+                        it = p.erase(it);
+                        cout << "취소 완료." << endl;
                     }
-                    delete pass;
-                    it = p.erase(it);
-                    cout << "취소 완료." << endl;
+                    else
+                        it++;
                 }
                 else
-                    it++;
+                {
+                    cout << "잘못된 접근입니다." << endl;
+                    return;
+                }
             }
+                if (found)
+                    cout << s_reservNum << ", Not found !!! " << endl; 
 
-
-            if (found)
-                cout << s_reservNum << ", Not found !!! " << endl;
-
+            
         }//while (1) end
     }
 
