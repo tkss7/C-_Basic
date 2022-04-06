@@ -46,7 +46,7 @@ private:
     int age;
     char phone[14];
     char planeNum2[6] = "";
-    char reservNum[5];
+    char reservNum[6];
     int password = 0;
 
 public:
@@ -69,7 +69,7 @@ public:
     void Setphone(const char* _phone) { strcpy(phone, _phone); }
     void Setage(int _age) { age = _age; }
     void SetplaneNum2(const char* _plane) { strcpy(planeNum2, _plane); }
-    void SetreservNum(int _countNum) 
+    void SetreservNum(int &_countNum) 
     {
         _countNum++;
         char s1[10] = "IA00";
@@ -212,11 +212,13 @@ public:
             //pass->SetplaneNum2(_ticket);
 
 
-            cout << "======================================" << endl;
-            cout << "예약 번호는 : " << _reservNum << "입니다." << endl;
-            cout << "======================================" << endl;
+
 
             pass->SetreservNum(_countNum);
+
+            cout << "======================================" << endl;
+            cout << "예약 번호는 : " << pass->GetreservNum() << "입니다." << endl;
+            cout << "======================================" << endl;
             p.push_back(pass);
 
 
@@ -297,71 +299,69 @@ public:
     void ReservationCancel()
     {
         Passenger* pass;
-        int found, choice = 0, changeAge, stop = 1, password;
-        char s_reservNum[20], * getreservNum, changePhone[14], changePlaneNum[6];
-        char* c_planeNum, changeName[20];
-        it = p.begin();
+        int found, choice = 0,  stop = 1, password;
+        char s_reservNum[20], * getreservNum ;
+        char* c_planeNum;
+        int getpassword;
+        
         cout << "예약 취소" << endl;
 
         while (1)
         {
+            it = p.begin();
             cout << "\n취소할 예약 번호 ? (검색종료:end) ";
             cin.getline(s_reservNum, 20);   //lee, kim, sun, ... end
-            //cin.ignore(256, '\n');
+            
             if (strcmp(s_reservNum, "end") == 0)
                 break;
             found = 1;
 
-
+            cout << "비밀번호 숫자 4자리를 입력하세요." << endl;
+            cin >> password;
+            cin.ignore(256, '\n');
+            if (cin.fail() == 1)
+            {
+                cin.clear();
+                break;
+            }
+            cin.clear();
 
             while (it != p.end())
             {
 
-                cout << "비밀번호 숫자 4자리를 입력하세요." << endl;
-                cin >> password;
-                cin.ignore(256, '\n');
-                if (cin.fail() == 1)
-                {
 
-                    break;
-                }
-                cin.clear();
-
-
-
-                cin.clear();
-
-
+                //cin.clear();
                 getreservNum = (*it)->GetreservNum();
+                getpassword = (*it)->Getpassword();
                 pass = *it;
-                if ((*it)->Getpassword() == password)
+                if (getpassword == password&&!strcmp(getreservNum, s_reservNum))
                 {
-                    if (strcmp(getreservNum, s_reservNum) == 0)
+                    
+                   
+
+                    found = 0;
+                    c_planeNum = (*it)->GetplaneNum();
+                    for (int i = 0; i < TIKET_SZ; i++)
                     {
-
-                        found = 0;
-                        c_planeNum = (*it)->GetplaneNum();
-                        for (int i = 0; i < TIKET_SZ; i++)
-                        {
-                            if (strcmp(c_planeNum, ticketlist[i]->GetplaneNum()) == 0)
-                                ticketlist[i]->Setcount(+1);
-                        }
-                        delete pass;
-                        it = p.erase(it);
-                        cout << "취소 완료." << endl;
-                        break;
+                        if (strcmp(c_planeNum, ticketlist[i]->GetplaneNum()) == 0)
+                            ticketlist[i]->Setcount(+1);
                     }
-                    else
-                        it++;
-
+                    delete pass;
+                    it = p.erase(it);
+                    cout << "취소 완료." << endl;
+                    break;
                 }
                 else
                 {
-                    cout << "잘못된 접근입니다." << endl;
-
+                    it++;
+                    if (getpassword != password && !strcmp(getreservNum, s_reservNum))
+                    {
+                        found = -1;
+                        cout << "비밀번호 오류!!!" << endl;
+                    }
                 }
             }
-            if (found)
+            if (found==1)
                 cout << s_reservNum << ", Not found !!! " << endl;
         }
     }
@@ -377,109 +377,112 @@ public:
         int found, choice = 0, changeAge, stop = 1, password;
         char s_reservNum[20], * getreservNum, changePhone[14], changePlaneNum[6];
         char* c_planeNum, changeName[20];
+        int getpassword;
         it = p.begin();
         cout << "예약 변경" << endl;
 
         while (1)
         {
+            it = p.begin();
             cout << "\n변경할 예약 번호 ? (검색종료:end) ";
             cin.getline(s_reservNum, 20);   //lee, kim, sun, ... end
-            //cin.ignore(256, '\n');
+
             if (strcmp(s_reservNum, "end") == 0)
                 break;
             found = 1;
 
-
-
-            while (it != p.end())
+            cout << "비밀번호 숫자 4자리를 입력하세요." << endl;
+            cin >> password;
+            cin.ignore(256, '\n');
+            if (cin.fail() == 1)
             {
-                do {
-                    cout << "비밀번호 숫자 4자리를 입력하세요." << endl;
-                    cin >> password;
-                    cin.clear();
-                    cin.ignore(256, '\n');
-                } while (cin.fail());
+                cin.clear();
+                break;
+            }
+            cin.clear();
+
+
+
+            for (it=p.begin();it != p.end();it++)
+            {
 
                 getreservNum = (*it)->GetreservNum();
+                getpassword = (*it)->Getpassword();
                 pass = *it;
-                if ((*it)->Getpassword() == password)
+
+                if (getpassword == password && !strcmp(getreservNum, s_reservNum))
                 {
-                    if (strcmp(getreservNum, s_reservNum) == 0)
+
+                    found = 0;
+                    c_planeNum = (*it)->GetplaneNum();
+                    for (int i = 0; i < TIKET_SZ; i++)
                     {
-
-                        found = 0;
-                        c_planeNum = (*it)->GetplaneNum();
-                        for (int i = 0; i < TIKET_SZ; i++)
-                        {
-                            if (strcmp(c_planeNum, ticketlist[i]->GetplaneNum()) == 0)
-                                ticketlist[i]->Setcount(+1);
-                        }
-
-
-                        cout << "==============================================================================" << endl;
-                        cout << "변경 할 정보를 선택해 주세요." << endl;
-                        cout << endl;
-                        cout << "1.성명   2.나이   3. 연락처  4. 항공편  5. 나가기" << endl;
-                        cout << "==============================================================================" << endl;
-                        //TicketBuy();
-
-                        cin >> choice;
-                        cin.ignore(2, '\n');
-                        switch (choice)
-                        {
-                        case 1:
-                        {
-                            cout << "변경 할 이름을 입력하세요." << endl;
-                            cin.getline(changeName, 20);
-                            (*it)->Setname(changeName);
-                        }
-                        break;
-                        case 2:
-                        {
-                            cout << "변경 할 나이을 입력하세요." << endl;
-                            cin >> changeAge;
-                            (*it)->Setname(changeAge);
-                        }
-                        break;
-                        case 3:
-                        {
-                            cout << "변경 할 연락처을 입력하세요." << endl;
-                            cin.getline(changePhone, 15);
-                            (*it)->Setname(changePhone);
-                        }
-                        break;
-                        case 4:
-                        {
-                            cout << "변경 할 항공편을 입력하세요." << endl;
-                            cin.getline(changePlaneNum, 2);
-                            (*it)->Setname(changePlaneNum);
-                        }
-                        break;
-                        case 5: stop = 0;
-                            break;
-                        }
-
-
-                        cout << "예약 번호는 : " << (*it)->GetreservNum() << "입니다." << endl;
-
-
-                        delete pass;
-                        it = p.erase(it);
-
-                        cout << "변경 완료." << endl;
+                        if (strcmp(c_planeNum, ticketlist[i]->GetplaneNum()) == 0)
+                            ticketlist[i]->Setcount(+1);
                     }
-                    else
-                        it++;
+
+
+                    cout << "==============================================================================" << endl;
+                    cout << "변경 할 정보를 선택해 주세요." << endl;
+                    cout << endl;
+                    cout << "1.성명   2.나이   3. 연락처  4. 항공편  5. 나가기" << endl;
+                    cout << "==============================================================================" << endl;
+                    //TicketBuy();
+
+                    cin >> choice;
+                    cin.ignore(2, '\n');
+                    switch (choice)
+                    {
+                    case 1:
+                    {
+                        cout << "변경 할 이름을 입력하세요." << endl;
+                        cin.getline(changeName, 20);
+                        (*it)->Setname(changeName);
+                    }
+                    break;
+                    case 2:
+                    {
+                        cout << "변경 할 나이을 입력하세요." << endl;
+                        cin >> changeAge;
+                        (*it)->Setname(changeAge);
+                    }
+                    break;
+                    case 3:
+                    {
+                        cout << "변경 할 연락처을 입력하세요." << endl;
+                        cin.getline(changePhone, 15);
+                        (*it)->Setname(changePhone);
+                    }
+                    break;
+                    case 4:
+                    {
+                        cout << "변경 할 항공편을 입력하세요." << endl;
+                        cin.getline(changePlaneNum, 2);
+                        (*it)->Setname(changePlaneNum);
+                    }
+                    break;
+                    case 5: stop = 0;
+                        break;
+                    }
+
+
+                    cout << "예약 번호는 : " << (*it)->GetreservNum() << "입니다." << endl;
+
+
+                    cout << "변경 완료." << endl;
                 }
                 else
                 {
-                    cout << "잘못된 접근입니다." << endl;
-                    return;
+                    
+                    if (getpassword != password && !strcmp(getreservNum, s_reservNum))
+                    {
+                        found = -1;
+                        cout << "비밀번호 오류!!!" << endl;
+                    }
                 }
+
             }
-
-
-            if (found)
+            if (found==1)
                 cout << s_reservNum << ", Not found !!! " << endl;
 
         }
@@ -533,25 +536,25 @@ public:
     void Save_TicketData()
     {
 
-        const char* file = "Ticket.txt";
+        const char* file_Ticket = "Ticket.txt";
 
-        ofstream fout(file, ios::out);
-        if (!fout)
+        ofstream fout_Ticket(file_Ticket, ios::out);
+        if (!fout_Ticket)
         {
-            cout << "Library.txt 파일을 열 수 없음";
+            cout << "Ticket.txt 파일을 열 수 없음";
             return;
         }
 
-        fout << tkNum << endl;                      //파일에 count 값 저장
+        fout_Ticket << tkNum << endl;                      //파일에 count 값 저장
         for (int i = 0; i < tkNum; i++)                   //0부터 count번째만큼 (즉 입력된 유효반복횟수만큼) 파일에 각각의 데이터 저장
         {
-            fout << ticketlist[i]->GetplaneNum() << " ";
-            fout << ticketlist[i]->Getdestination() << " ";
-            fout << ticketlist[i]->Gettime() << " ";
-            fout << ticketlist[i]->Getcount() << endl;
+            fout_Ticket << ticketlist[i]->GetplaneNum() << " ";
+            fout_Ticket << ticketlist[i]->Getdestination() << " ";
+            fout_Ticket << ticketlist[i]->Gettime() << " ";
+            fout_Ticket << ticketlist[i]->Getcount() << endl;
 
         }
-        fout.close();
+        fout_Ticket.close();
         cout << "[ Ticket.txt에 저장 완료 ]" << endl;
     }
 
@@ -563,42 +566,45 @@ public:
         int ticketcount;
 
 
-        const char* file = "Ticket.txt";
+        const char* file_Ticket = "Ticket.txt";
 
-        ifstream fin(file, ios::in);
+        ifstream fin_Ticket(file_Ticket, ios::in);
 
-        if (!fin)
+        if (!fin_Ticket)
         {
             cout << "Ticket.txt 파일을 열 수 없음";
             return;
 
         }
 
-        fin >> tkNum;                 //파일에 저장된 count값을 불러옴
+        fin_Ticket >> tkNum;                 //파일에 저장된 count값을 불러옴
 
         for (int i = 0; i < tkNum; i++)       //파일에 저장된 각 데이터들을 불러옴
         {
-            fin >> planeNum;
-            fin >> destination;
-            fin >> time;
-            fin >> ticketcount;
+            fin_Ticket >> planeNum;
+            fin_Ticket >> destination;
+            fin_Ticket >> time;
+            fin_Ticket >> ticketcount;
             ticketlist[i] = new TicketList(planeNum, destination, time, ticketcount);
             //Book class의 매개변수 생성자 호출 후 fin으로 입력받은 변수들 넘김
         }
 
-        fin.close();
+        fin_Ticket.close();
         cout << "[ Ticket.txt load 완료 ]" << endl;
     }
 
     void Save_PassengerData()
     {
-        string input_name, output_name;
-        const char* file = "Pessenger.txt";
 
-        ofstream fout(file, ios::out);
+        Save_TicketData();
+
+        string input_name, output_name;
+        const char* file_Pass = "Passenger.txt";
+
+        ofstream fout(file_Pass, ios::out);
         if (!fout)
         {
-            cout << "Pessenger.dat 파일을 열 수 없음";
+            cout << "Passenger.txt 파일을 열 수 없음";
             return;
         }
         fout << p.size() << endl;                      //파일에 count 값 저장
@@ -626,46 +632,45 @@ public:
         int age;
         char phone[14];
         char planeNum2[6] = "";
-        char reservNum[5];
+        char reservNum[6];
         int password = 0;
 
+        Load_TIcketData();
 
-        const char* file = "Passenger.txt";
+        const char* file_Pass = "Passenger.txt";
 
-        ifstream fin(file, ios::in);
+        ifstream fin_Pass(file_Pass, ios::in);
 
-        if (!fin)
+        if (!fin_Pass)
         {
-            cout << "Ticket.txt 파일을 열 수 없음";
+            cout << "Passenger.txt 파일을 열 수 없음";
             return;
 
         }
 
-        fin >> _countNum;                 //파일에 저장된 count값을 불러옴
+        fin_Pass >> _countNum;                 //파일에 저장된 count값을 불러옴
 
-        for (it = p.begin(); it != p.end(); it++)       //파일에 저장된 각 데이터들을 불러옴
+        for (int i = 0; i < _countNum; i++)       //파일에 저장된 각 데이터들을 불러옴
         {
-            Passenger* pass = *it;
-            fin >> name;
-            fin >> age;
-            fin >> phone;
-            fin >> planeNum2;
-            fin >> reservNum;
-            fin >> password;
-            (*it)->Setname(name);
-            (*it)->Setage(age);
-            (*it)->Setphone(phone);
-            (*it)->SetplaneNum2(planeNum2);
-            (*it)->SetreservNum_c(reservNum);
-            (*it)->Setpassword(password);
+            Passenger* pass = new Passenger;
+            fin_Pass >> name;
+            fin_Pass >> age;
+            fin_Pass >> phone;
+            fin_Pass >> planeNum2;
+            fin_Pass >> reservNum;
+            fin_Pass >> password;
+            pass->Setname(name);
+            pass->Setage(age);
+            pass->Setphone(phone);
+            pass->SetplaneNum2(planeNum2);
+            pass->SetreservNum_c(reservNum);
+            pass->Setpassword(password);
 
             p.push_back(pass);
-            //ticketlist[i] = new TicketList(planeNum, destination, time, ticketcount);
-            //Book class의 매개변수 생성자 호출 후 fin으로 입력받은 변수들 넘김
         }
 
-        fin.close();
-        cout << "[ Ticket.txt load 완료 ]" << endl;
+        fin_Pass.close();
+        cout << "[ Passenger.txt load 완료 ]" << endl;
     }
 
     //Revise();
@@ -677,11 +682,11 @@ int main()
     
     PassHandler handler;
 
-    handler.Make_Ticket(new TicketList("AI001", "워싱턴DC", "PM 17:00", 5));
+   /* handler.Make_Ticket(new TicketList("AI001", "워싱턴DC", "PM 17:00", 5));
     handler.Make_Ticket(new TicketList("AI002", "뉴욕", "PM 1:00", 4));
     handler.Make_Ticket(new TicketList("CI015", "워싱턴DC", "PM 12:00", 3));
     handler.Make_Ticket(new TicketList("FI001", "로스엔젤레스", "PM 11:00", 2));
-    handler.Make_Ticket(new TicketList("FI021", "가즈아", "PM 6:00", 1));
+    handler.Make_Ticket(new TicketList("FI021", "가즈아", "PM 6:00", 1));*/
 
     handler.Load_PassengerData();
 

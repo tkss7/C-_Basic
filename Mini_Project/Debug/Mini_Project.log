@@ -1,17 +1,14 @@
 ﻿  소스2.cpp
-D:\C_Plus-Plus_Basic\Mini_Project\소스2.cpp(27,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\C_Plus-Plus_Basic\Mini_Project\소스2.cpp(28,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\C_Plus-Plus_Basic\Mini_Project\소스2.cpp(29,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\C_Plus-Plus_Basic\Mini_Project\소스2.cpp(56,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\C_Plus-Plus_Basic\Mini_Project\소스2.cpp(57,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\C_Plus-Plus_Basic\Mini_Project\소스2.cpp(68,39): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\C_Plus-Plus_Basic\Mini_Project\소스2.cpp(69,41): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\C_Plus-Plus_Basic\Mini_Project\소스2.cpp(71,45): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\C_Plus-Plus_Basic\Mini_Project\소스2.cpp(79,9): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\C_Plus-Plus_Basic\Mini_Project\소스2.cpp(80,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\C_Plus-Plus_Basic\Mini_Project\소스2.cpp(82,45): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\C_Plus-Plus_Basic\Mini_Project\소스2.cpp(301,47): warning C4101: 'changePhone' :참조되지 않은 지역 변수입니다.
-D:\C_Plus-Plus_Basic\Mini_Project\소스2.cpp(300,32): warning C4101: 'changeAge' :참조되지 않은 지역 변수입니다.
-D:\C_Plus-Plus_Basic\Mini_Project\소스2.cpp(301,64): warning C4101: 'changePlaneNum' :참조되지 않은 지역 변수입니다.
-D:\C_Plus-Plus_Basic\Mini_Project\소스2.cpp(302,27): warning C4101: 'changeName' :참조되지 않은 지역 변수입니다.
-  Mini_Project.vcxproj -> D:\C_Plus-Plus_Basic\Mini_Project\Debug\Mini_Project.exe
+C:\Users\dltkd\Desktop\C++_Basic\Mini_Project\소스2.cpp(27,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\dltkd\Desktop\C++_Basic\Mini_Project\소스2.cpp(28,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\dltkd\Desktop\C++_Basic\Mini_Project\소스2.cpp(29,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\dltkd\Desktop\C++_Basic\Mini_Project\소스2.cpp(56,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\dltkd\Desktop\C++_Basic\Mini_Project\소스2.cpp(57,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\dltkd\Desktop\C++_Basic\Mini_Project\소스2.cpp(68,39): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\dltkd\Desktop\C++_Basic\Mini_Project\소스2.cpp(69,41): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\dltkd\Desktop\C++_Basic\Mini_Project\소스2.cpp(71,45): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\dltkd\Desktop\C++_Basic\Mini_Project\소스2.cpp(79,9): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\dltkd\Desktop\C++_Basic\Mini_Project\소스2.cpp(80,9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\dltkd\Desktop\C++_Basic\Mini_Project\소스2.cpp(82,45): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\dltkd\Desktop\C++_Basic\Mini_Project\소스2.cpp(155,14): warning C4101: '_reservNum' :참조되지 않은 지역 변수입니다.
+  Mini_Project.vcxproj -> C:\Users\dltkd\Desktop\C++_Basic\Mini_Project\Debug\Mini_Project.exe
