@@ -12,7 +12,7 @@
 using namespace std;
 
 //IA001 0408 18:00 pm  0409 18:00 pm   London
-#define TIKET_SZ 5
+#define TIKET_SZ 20
 class TicketList
 {
 private:
@@ -22,7 +22,7 @@ private:
     int count;
 
 public:
-    TicketList(const char* planeNum, const char* destination, const char* time, int _count)
+    TicketList(const char* planeNum="", const char* destination="", const char* time="", int _count=0)
     {
         strcpy(this->planeNum, planeNum);
         strcpy(this->destination, destination);
@@ -35,7 +35,17 @@ public:
     char* Getdestination() { return destination; }
     char* Gettime() { return time; }
     int Getcount() { return count; }
-    void Setcount(int num) { count = count + num; }
+    void Setcount(int num) 
+    {
+        if (count-num < 0)
+        {
+            cout << "잔여 좌석이 없습니다.!!!" << endl;
+            return;
+        }
+        else
+            count = count + num;
+        
+    }
 
 };
 
@@ -495,6 +505,38 @@ public:
 
 
     //}
+    void Add_TicketList()
+    {
+        char _planeNum[6]; //planeNum
+        char _destination[30];
+        char _time[20];
+        int _count;
+
+
+        while (1)
+        {
+            TicketList* ticket = new TicketList;
+
+            cout << "추가할 항공편의 이름을 입력하세요. : (종료시:end)";
+            cin.getline(_planeNum, 20);
+            if (strcmp(_planeNum, "end") == 0)
+            {
+                delete ticket;
+                break;
+            }
+            
+            cout << "추가할 항공편의 목적지를 입력하세요. : ";
+            cin.getline(_destination, 30);
+            
+            cout << "추가할 항공편의 출발 시간을 입력하세요. : ";
+            cin.getline(_time, 20);
+
+            do
+            cout << "추가할 항공편의 좌석 수를 입력하세요. : ";
+            cin.getline(_time
+
+        }
+    }
 
 
     void Admin()
